@@ -18,7 +18,8 @@ class UserController extends Controller
         if ($user) {
             if (\Hash::check($request['password'], $user->password)) {
                 return response()->json([
-                    'status' => 'ok'
+                    'status' => 'ok',
+                    'user'   => json_encode($user)
                 ]);
             } else {
                 return response()->json([
@@ -66,7 +67,6 @@ class UserController extends Controller
                 'status' => 'error'
             ]);
         }
-
     }
 
     /**
@@ -135,7 +135,38 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        $rules = [
+            'firstname' => 'required',
+            'lastname'  => 'required',
+            'email'     => 'required|email',
+            'password'  => 'confirmed',
+            'birthdate' => 'required|date'
+        ];
+
+        $validator = Validator::make($input, $rules);
+
+        if ($validator->passes()) {
+            $user = User::find($id);
+
+            $user->firstname = $input['firstname'];
+            $user->lastname  = $input['lastname'];
+            $user->email     = $input['email'];
+            // $user->password  = \Hash::make($input['password']);
+            $user->birthdate = $input['birthdate'];
+
+            $user->save();
+
+            return response()->json([
+                'status' => 'ok',
+                'user'   => $user
+            ]);
+        } else {
+            return response()->json([
+                'status' => 'error'
+            ]);
+        }
     }
 
     /**
