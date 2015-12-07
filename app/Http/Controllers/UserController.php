@@ -59,7 +59,7 @@ class UserController extends Controller
 
             return response()->json([
                 'status' => 'ok'
-            ])
+            ]);
         } else {
             return response()->json([
                 'status' => 'error'
