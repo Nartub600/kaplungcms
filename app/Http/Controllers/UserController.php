@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
@@ -17,7 +16,7 @@ class UserController extends Controller
         $user = User::where('email', $request['email'])->first();
 
         if ($user) {
-            if (Hash::check($request['password'], $user->password)) {
+            if (\Hash::check($request['password'], $user->password)) {
                 return response()->json([
                     'status' => 'ok'
                 ]);
@@ -54,7 +53,7 @@ class UserController extends Controller
             $user->firstname = $input['firstname'];
             $user->lastname  = $input['lastname'];
             $user->email     = $input['email'];
-            $user->password  = Hash::make($input['password']);
+            $user->password  = \Hash::make($input['password']);
             $user->birthdate = $input['birthdate'];
 
             $user->save();
