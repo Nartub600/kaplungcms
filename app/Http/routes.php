@@ -19,6 +19,6 @@ Route::get('/', function () {
 //     return view('home');
 // });
 
-Route::post('user/login', ['uses' => 'UserController@postLogin']);
-Route::post('user/register', ['uses' => 'UserController@postRegister']);
+Route::post('user/login', ['uses' => 'UserController@login']);
+Route::post('user/register', ['uses' => 'UserController@register']);
 // Route::resource('user', 'UserController');
