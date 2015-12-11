@@ -23,12 +23,12 @@ class UserController extends Controller
                 ]);
             } else {
                 return response()->json([
-                    'status' => 'error'
+                    'status' => 'El password es incorrecto'
                 ]);
             }
         } else {
             return response()->json([
-                'status' => 'error'
+                'status' => 'No hay un usuario registrado con esa dirección'
             ]);
         }
     }
@@ -65,7 +65,7 @@ class UserController extends Controller
             ]);
         } else {
             return response()->json([
-                'status' => 'error'
+                'status' => $validator->errors()->all()
             ]);
         }
     }
