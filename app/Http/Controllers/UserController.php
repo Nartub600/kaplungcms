@@ -40,7 +40,7 @@ class UserController extends Controller
         $rules = [
             'firstname' => 'required',
             'lastname'  => 'required',
-            'email'     => 'required|email',
+            'email'     => 'required|email|unique:users,email',
             'password'  => 'required|confirmed',
             // 'birthdate' => 'required|date',
             'terms'     => 'accepted'
