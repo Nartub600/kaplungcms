@@ -42,7 +42,7 @@ class UserController extends Controller
             'lastname'  => 'required',
             'email'     => 'required|email',
             'password'  => 'required|confirmed',
-            'birthdate' => 'required|date',
+            // 'birthdate' => 'required|date',
             'terms'     => 'accepted'
         ];
 
@@ -55,12 +55,13 @@ class UserController extends Controller
             $user->lastname  = $input['lastname'];
             $user->email     = $input['email'];
             $user->password  = \Hash::make($input['password']);
-            $user->birthdate = $input['birthdate'];
+            // $user->birthdate = $input['birthdate'];
 
             $user->save();
 
             return response()->json([
-                'status' => 'ok'
+                'status' => 'ok',
+                'user'   => $user
             ]);
         } else {
             return response()->json([
