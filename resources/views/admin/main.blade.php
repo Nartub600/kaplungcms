@@ -29,7 +29,7 @@
       <div class="icon">
         <i class="ion ion-happy-outline"></i>
       </div>
-      <a href="{{action('Admin\MainController@points')}}" class="small-box-footer">er m&aacute;s <i class="fa fa-arrow-circle-right"></i></a>
+      <a href="{{action('Admin\MainController@points')}}" class="small-box-footer">Ver m&aacute;s <i class="fa fa-arrow-circle-right"></i></a>
     </div>
   </div>
 </div>
