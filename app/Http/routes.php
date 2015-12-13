@@ -38,3 +38,8 @@ Route::get('admin/users', [
     'middleware' => 'auth',
     'uses' => 'Admin\MainController@users'
 ]);
+
+Route::get('admin/points', [
+    'middleware' => 'auth',
+    'uses' => 'Admin\MainController@points'
+]);

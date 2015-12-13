@@ -10,7 +10,6 @@
     <div class="small-box bg-yellow">
       <div class="inner">
         <h3>{{$usersCount}}</h3>
-
         <p>Usuarios registrados</p>
       </div>
       <div class="icon">
@@ -20,6 +19,19 @@
     </div>
   </div>
   <!-- ./col -->
+  <div class="col-lg-3 col-xs-6">
+    <!-- small box -->
+    <div class="small-box bg-red">
+      <div class="inner">
+        <h3>{{$pointsCount}}</h3>
+        <p>Smile Points</p>
+      </div>
+      <div class="icon">
+        <i class="ion ion-happy-outline"></i>
+      </div>
+      <a href="{{action('Admin\MainController@points')}}" class="small-box-footer">er m&aacute;s <i class="fa fa-arrow-circle-right"></i></a>
+    </div>
+  </div>
 </div>
 <!-- /.row -->
 @endsection

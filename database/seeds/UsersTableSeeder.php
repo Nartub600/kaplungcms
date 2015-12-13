@@ -11,7 +11,9 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-      \App\User::truncate();
+      DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+
+      DB::table('users')->truncate();
 
       //agrego un admin admin para poder entrar
       DB::table('users')->insert([
@@ -24,5 +26,10 @@ class UsersTableSeeder extends Seeder
 
       //agrego unos 50 para hacer bulto
       factory(App\User::class, 50)->create();
+
+      //sedeo puntajes para hacer mas bulto
+       $this->call(PointsTableSeeder::class);
+
+      DB::statement('SET FOREIGN_KEY_CHECKS = 1'); // enable foreign key constraints
     }
 }

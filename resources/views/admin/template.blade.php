@@ -121,7 +121,17 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">Administraci&oacute;n</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="{{action('Admin\MainController@users')}}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+        <li class="{{ request()->path() == 'admin/users' ? 'active' : '' }}">
+          <a href="{{action('Admin\MainController@users')}}">
+            <i class="fa fa-user"></i> <span>Usuarios</span>
+          </a>
+        </li>
+        <li class="{{ request()->path() == 'admin/points' ? 'active' : '' }}">
+          <a href="{{action('Admin\MainController@points')}}">
+            <i class="fa fa-smile-o"></i> <span>Puntos</span>
+          </a>
+
+        </li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>

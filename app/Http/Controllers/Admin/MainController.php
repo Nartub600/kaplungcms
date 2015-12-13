@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Point;
 
 class MainController extends Controller
 {
@@ -18,7 +19,8 @@ class MainController extends Controller
     public function index()
     {
         $usersCount = User::all()->count();
-        return view('admin.main', compact('usersCount'));
+        $pointsCount = Point::all()->count();
+        return view('admin.main', compact('usersCount', 'pointsCount'));
     }
 
     /**
@@ -91,5 +93,12 @@ class MainController extends Controller
     {
       $users = User::all();
       return view('admin.users', compact('users'));
+    }
+
+    public function points()
+    {
+      $points = Point::all();
+
+      return view('admin.points', compact('points'));
     }
 }
