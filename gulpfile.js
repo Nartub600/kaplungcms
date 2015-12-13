@@ -13,5 +13,6 @@ var elixir = require('laravel-elixir');
 
 elixir(function(mix) {
     mix.sass('app.scss').styles('welcome.css')
-      .copy('resources/assets/fonts/KiplingRegular.otf', 'public/css/KiplingRegular.otf');
+      .copy('resources/assets/fonts/KiplingRegular.otf', 'public/css/KiplingRegular.otf')
+      .copy('vendor/almasaeed2010/adminlte', 'public/vendor/adminlte');
 });

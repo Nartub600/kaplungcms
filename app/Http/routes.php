@@ -23,3 +23,7 @@ Route::post('user/login', ['uses' => 'UserController@login']);
 Route::post('user/register', ['uses' => 'UserController@register']);
 Route::put('user/update/{id}', ['uses' => 'UserController@update']);
 // Route::resource('user', 'UserController');
+
+Route::get('admin', function () {
+    return view('admin/template');
+});
