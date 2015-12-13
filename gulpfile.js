@@ -12,5 +12,6 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('app.scss');
+    mix.sass('app.scss').styles('welcome.css')
+      .copy('resources/assets/fonts/KiplingRegular.otf', 'public/css/KiplingRegular.otf');
 });
