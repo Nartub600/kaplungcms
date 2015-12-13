@@ -24,6 +24,17 @@ Route::post('user/register', ['uses' => 'UserController@register']);
 Route::put('user/update/{id}', ['uses' => 'UserController@update']);
 // Route::resource('user', 'UserController');
 
-Route::get('admin', function () {
-    return view('admin/template');
-});
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::get('admin', [
+    'middleware' => 'auth',
+    'uses' => 'Admin\MainController@index'
+]);
+
+Route::get('admin/users', [
+    'middleware' => 'auth',
+    'uses' => 'Admin\MainController@users'
+]);

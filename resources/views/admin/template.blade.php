@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Kipling App | Admin</title>
+  <title>Kipling App | Admin - @yield('title')</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.5 -->
@@ -26,6 +26,7 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  @yield('extra-stylesheet')
 </head>
 <!--
 BODY TAG OPTIONS:
@@ -54,7 +55,7 @@ desired effect
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="/admin" class="logo">
+    <a href="{{action('Admin\MainController@index')}}" class="logo">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>A</b>LT</span>
       <!-- logo for regular state and mobile devices -->
@@ -77,7 +78,7 @@ desired effect
               <!-- The user image in the navbar-->
               <i class="fa fa-user"></i>
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Juan Domingo Peron</span>
+              <span class="hidden-xs">{{ auth()->user()->name }}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -85,13 +86,13 @@ desired effect
                 <!-- <img src="{{ asset("vendor/adminlte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image"> -->
                 <i class="fa fa-user fa-5x"></i>
                 <p>
-                  Juan Domingo Peron
+                  {{ auth()->user()->name  }}
                 </p>
               </li>
               <!-- Menu Footer-->
               <li class="user-footer">
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{action("Auth\AuthController@getLogout")}}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -112,7 +113,7 @@ desired effect
           <i class="fa fa-user fa-4x"></i>
         </div>
         <div class="pull-left info">
-          <p>Juan Domingo Peron</p>
+          <p>{{ auth()->user()->name }}</p>
         </div>
       </div>
 
@@ -120,7 +121,7 @@ desired effect
       <ul class="sidebar-menu">
         <li class="header">Administraci&oacute;n</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
+        <li class="active"><a href="{{action('Admin\MainController@users')}}"><i class="fa fa-user"></i> <span>Usuarios</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -136,8 +137,8 @@ desired effect
         <small>Panel de Administraci&oacute;n</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="/admin"><i class="fa fa-dashboard"></i> Inicio</a></li>
-        <li class="active">Main</li>
+        <li><a href="{{action('Admin\MainController@index')}}"><i class="fa fa-dashboard"></i> Inicio</a></li>
+        <li class="active">@yield('title')</li>
       </ol>
     </section>
 
@@ -145,6 +146,7 @@ desired effect
     <section class="content">
 
       <!-- Your Page Content Here -->
+       @yield('content')
 
     </section>
     <!-- /.content -->
@@ -166,5 +168,7 @@ desired effect
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+
+@yield('extra-scripts')
 </body>
 </html>
