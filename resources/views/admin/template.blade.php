@@ -126,6 +126,12 @@ desired effect
             <i class="fa fa-user"></i> <span>Usuarios</span>
           </a>
         </li>
+        <li class="{{ request()->path() == 'admin/benefits' ? 'active' : '' }}">
+          <a href="{{action('Admin\MainController@benefits')}}">
+            <i class="fa fa-star"></i> <span>Beneficios</span>
+          </a>
+
+        </li>
         <li class="{{ request()->path() == 'admin/points' ? 'active' : '' }}">
           <a href="{{action('Admin\MainController@points')}}">
             <i class="fa fa-smile-o"></i> <span>Puntos</span>

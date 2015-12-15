@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Point;
+use App\Benefit;
+use DB;
 
 class MainController extends Controller
 {
@@ -20,7 +22,9 @@ class MainController extends Controller
     {
         $usersCount = User::all()->count();
         $pointsCount = Point::all()->count();
-        return view('admin.main', compact('usersCount', 'pointsCount'));
+        $benefitsCount = DB::select('select count(1) as value from benefit_user;')[0]->value; // te re cabio =D
+
+        return view('admin.main', compact('usersCount', 'pointsCount', 'benefitsCount'));
     }
 
     /**
@@ -101,4 +105,12 @@ class MainController extends Controller
 
       return view('admin.points', compact('points'));
     }
+
+    public function benefits()
+    {
+      $users = User::has('benefits')->get();
+
+      return view('admin.benefits', compact('users'));
+    }
+
 }

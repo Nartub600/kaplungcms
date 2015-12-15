@@ -42,4 +42,9 @@ class User extends Model implements AuthenticatableContract,
     {
         return $this->hasMany('App\Point');
     }
+
+    public function benefits()
+    {
+        return $this->belongsToMany('App\Benefit')->withPivot('consumed');;
+    }
 }
