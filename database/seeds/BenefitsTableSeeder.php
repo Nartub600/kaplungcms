@@ -15,8 +15,6 @@ class BenefitsTableSeeder extends Seeder
     {
       Benefit::truncate();
 
-      $faker = Faker\Factory::create();
-
       $benefits = [
         'Descuento del 15% de bienvenida',
         'Smile Points',
@@ -37,7 +35,7 @@ class BenefitsTableSeeder extends Seeder
       Benefit::reguard();
 
       //le asocio unos beneficios a todos los usuarios
-      DB::table('benefit_user')->truncate();      
+      DB::table('benefit_user')->truncate();
       foreach(User::all() as $user)
       {
 
