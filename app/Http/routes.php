@@ -48,3 +48,8 @@ Route::get('admin/benefits', [
     'middleware' => 'auth',
     'uses' => 'Admin\MainController@benefits'
 ]);
+
+Route::get('admin/avatars', [
+    'middleware' => 'auth',
+    'uses' => 'Admin\MainController@avatars'
+]);

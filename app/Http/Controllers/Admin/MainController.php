@@ -23,8 +23,9 @@ class MainController extends Controller
         $usersCount = User::all()->count();
         $pointsCount = Point::all()->count();
         $benefitsCount = DB::select('select count(1) as value from benefit_user;')[0]->value; // te re cabio =D
+        $avatarsCount = DB::select('select count(1) as value from avatar_user;')[0]->value;
 
-        return view('admin.main', compact('usersCount', 'pointsCount', 'benefitsCount'));
+        return view('admin.main', compact('usersCount', 'pointsCount', 'benefitsCount', 'avatarsCount'));
     }
 
     /**
@@ -111,6 +112,13 @@ class MainController extends Controller
       $users = User::has('benefits')->get();
 
       return view('admin.benefits', compact('users'));
+    }
+
+    public function avatars()
+    {
+      $users = User::has('avatars')->get();
+
+      return view('admin.avatars', compact('users'));
     }
 
 }

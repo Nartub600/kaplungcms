@@ -45,6 +45,11 @@ class User extends Model implements AuthenticatableContract,
 
     public function benefits()
     {
-        return $this->belongsToMany('App\Benefit')->withPivot('consumed');;
+        return $this->belongsToMany('App\Benefit')->withPivot('consumed');
+    }
+
+    public function avatars()
+    {
+        return $this->belongsToMany('App\Avatar');
     }
 }

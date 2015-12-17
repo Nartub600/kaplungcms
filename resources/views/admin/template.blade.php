@@ -136,7 +136,11 @@ desired effect
           <a href="{{action('Admin\MainController@points')}}">
             <i class="fa fa-smile-o"></i> <span>Puntos</span>
           </a>
-
+        </li>
+        <li class="{{ request()->path() == 'admin/avatars' ? 'active' : '' }}">
+          <a href="{{action('Admin\MainController@avatars')}}">
+            <i class="fa fa-user-plus"></i> <span>Changuitos</span>
+          </a>
         </li>
       </ul>
       <!-- /.sidebar-menu -->
